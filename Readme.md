@@ -159,7 +159,7 @@ Running the job:
 
 ```
 hadoop jar target/joins-1.0-SNAPSHOT.jar \
-  com.cloudwick.mapreduce.reduceside.Driver \
+  com.cloudwick.mapreduce.joins.reduceside.Driver \
   employees \
   salaryhistory \
   depts.map \

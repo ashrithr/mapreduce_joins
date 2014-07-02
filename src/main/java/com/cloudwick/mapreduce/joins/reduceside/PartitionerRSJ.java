@@ -15,6 +15,6 @@ public class PartitionerRSJ extends Partitioner<CompositeKeyWritableRSJ, Text> {
     @Override
     public int getPartition(CompositeKeyWritableRSJ key, Text value, int numReduceTasks) {
         // Partitions on joinKey (EmployeeID)
-        return (key.getJoinKey().hashCode() % numReduceTasks);
+        return (key.getJoinKey().toString().hashCode() % numReduceTasks);
     }
 }
