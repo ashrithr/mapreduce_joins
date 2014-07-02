@@ -181,6 +181,26 @@ HashMap in the setUp() method of the mapper, and the HashMap is referenced in th
 and emit the employee dataset with department name included.
 
 
+#### Using Map File
+
+```
+hadoop jar target/joins-1.0-SNAPSHOT.jar \
+  com.cloudwick.mapreduce.joins.mapside.dc.mapfile.Driver \
+  employees \
+  depts.map \
+  outputmsm
+```
+
+### Using Text File
+
+```
+hadoop jar target/joins-1.0-SNAPSHOT.jar \
+  com.cloudwick.mapreduce.joins.mapside.dc.textfile.Driver \
+  employees \
+  departments/part-m-00000 \
+  outputmst
+```
+
 
 ### MapSide Join on Large Files
 
@@ -206,3 +226,12 @@ method to create a “join expression” specifying an inner join by using the w
 format to use, the KeyValueTextInputclass and finally a String varargs representing the paths of the files to join 
 (which are the output paths of the map-reduce jobs ran to sort and partition the data). The `KeyValueTextInputFormat` 
 class will use the separator character to set the first value as the key and the rest will be used for the value.
+
+
+```
+hadoop jar target/joins-1.0-SNAPSHOT.jar \
+  com.cloudwick.mapreduce.joins.mapside.largefiles.Driver \
+  employees \
+  salaries \
+  outputmlf
+```
