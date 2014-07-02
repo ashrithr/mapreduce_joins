@@ -1,0 +1,31 @@
+package com.cloudwick.mapreduce.joins.reduceside.regular;
+
+import org.apache.hadoop.io.WritableComparable;
+import org.apache.hadoop.io.WritableComparator;
+
+/**
+ * To ensure that the input to the reducer is sorted on empNo, then on sourceIndex, we need a sort comparator.
+ * This will guarantee that the employee data is the first set in the values list for a key, then the salary data.
+ *
+ * @author ashrith
+ */
+public class SortingComparatorRSJ extends WritableComparator {
+
+    protected SortingComparatorRSJ() {
+        super(CompositeKeyWritableRSJ.class, true);
+    }
+
+    @Override
+    public int compare(WritableComparable w1, WritableComparable w2) {
+        // Sort on all attributes of composite key
+        CompositeKeyWritableRSJ key1 = (CompositeKeyWritableRSJ) w1;
+        CompositeKeyWritableRSJ key2 = (CompositeKeyWritableRSJ) w2;
+
+        int cmpResult = key1.getjoinKey().compareTo(key2.getjoinKey());
+        if (cmpResult == 0)// same joinKey
+        {
+            return Double.compare(key1.getsourceIndex(), key2.getsourceIndex());
+        }
+        return cmpResult;
+    }
+}
