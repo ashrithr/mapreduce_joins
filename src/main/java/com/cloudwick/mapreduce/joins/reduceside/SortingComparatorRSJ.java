@@ -1,4 +1,4 @@
-package com.cloudwick.mapreduce.joins.reduceside.regular;
+package com.cloudwick.mapreduce.joins.reduceside;
 
 import org.apache.hadoop.io.WritableComparable;
 import org.apache.hadoop.io.WritableComparator;

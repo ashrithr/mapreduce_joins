@@ -155,6 +155,17 @@ Implementing it:
   of department to include department name in the output. [Implementation: *ReducerRSJ*]
 
 
+Running the job:
+
+```
+hadoop jar target/joins-1.0-SNAPSHOT.jar \
+  com.cloudwick.mapreduce.reduceside.Driver \
+  employees \
+  salaryhistory \
+  depts.map \
+  outputrsj
+```
+
 ### MapSide Joins
 
 To take advantage of map-side joins our data must meet one of following criteria:
