@@ -21,10 +21,10 @@ public class SortingComparatorRSJ extends WritableComparator {
         CompositeKeyWritableRSJ key1 = (CompositeKeyWritableRSJ) w1;
         CompositeKeyWritableRSJ key2 = (CompositeKeyWritableRSJ) w2;
 
-        int cmpResult = key1.getjoinKey().compareTo(key2.getjoinKey());
+        int cmpResult = key1.getJoinKey().compareTo(key2.getJoinKey());
         if (cmpResult == 0)// same joinKey
         {
-            return Double.compare(key1.getsourceIndex(), key2.getsourceIndex());
+            return Double.compare(key1.getTag().get(), key2.getTag().get());
         }
         return cmpResult;
     }
